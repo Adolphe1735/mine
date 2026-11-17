@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: #0B0F14;
+  --color-surface: #101820;
+  --color-surface-elevated: #15202B;
+  --color-accent: #00C853;
+  --color-accent-hover: #00E676;
+}
+
+@layer base {
+  html {
+    background-color: #0B0F14;
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: #0B0F14;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1C2936;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 200, 83, 0.55);
+}
+
+/* Subtle architectural grid decoration for dark canvas */
+.bg-architectural-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Subtle radial dot grid for secondary sections */
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Crisp gradient hairline section divider */
+.section-divider {
+  position: relative;
+}
+
+.section-divider::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(0, 200, 83, 0.35) 50%,
+    rgba(255, 255, 255, 0.08) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Elevated Glassmorphism & Specular Rim */
+.glass-surface {
+  background: linear-gradient(
+    180deg,
+    rgba(21, 32, 43, 0.85) 0%,
+    rgba(16, 24, 32, 0.9) 100%
+  );
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 12px 32px -16px rgba(0, 0, 0, 0.65);
+}
+
+.glow-accent {
+  box-shadow:
+    0 0 36px -8px rgba(0, 200, 83, 0.45),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+.glow-card-hover {
+  position: relative;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 200, 83, 0.48);
+  box-shadow:
+    inset 0 1px 0 0 rgba(0, 230, 118, 0.18),
+    0 20px 44px -18px rgba(0, 200, 83, 0.28);
+}
+
+/* Subtle top specular edge highlight inside elevated surface cards */
+.card-specular {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0) 45%
+  );
+}
+
+/* Smooth tech marquee animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles for CV modal */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #cv-printable-sheet,
+  #cv-printable-sheet * {
+    visibility: visible;
+  }
+  #cv-printable-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #FFFFFF !important;
+    color: #101820 !important;
+    padding: 2rem !important;
+    box-shadow: none !important;
+  }
+}
