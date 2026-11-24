@@ -3,6 +3,7 @@ import { Code, Cpu, Database, Layers, Server, Wrench } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 import { EASE_OUT_EXPO, SectionReveal } from './MotionPrimitives';
+import TechLogo from './TechLogo';
 
 const CATEGORY_ICONS: Record<string, ReactNode> = {
   frontend: <Code className="h-5 w-5 text-[#00C853]" aria-hidden="true" />,
@@ -135,12 +136,20 @@ export default function Skills() {
                   {category.items.map((skill) => (
                     <li
                       key={skill}
-                      className="flex items-center justify-between py-2.5 text-sm font-medium text-slate-200 transition-colors duration-150 hover:text-white"
+                      className="group/item flex items-center justify-between py-2.5 text-sm font-medium text-slate-200 transition-colors duration-150 hover:text-white"
                     >
-                      <span>{skill}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-[#0B0F14]/85 transition-colors duration-150 group-hover/item:border-[#00C853]/40">
+                          <TechLogo
+                            name={skill}
+                            className="h-4 w-4 transition-transform duration-150 group-hover/item:scale-110"
+                          />
+                        </span>
+                        <span>{skill}</span>
+                      </div>
                       <span
                         aria-hidden="true"
-                        className="h-1.5 w-1.5 rounded-sm bg-[#00C853]/70 transition-all duration-200 group-hover:scale-125 group-hover:bg-[#00E676]"
+                        className="h-1.5 w-1.5 rounded-sm bg-[#00C853]/70 transition-all duration-200 group-hover/item:scale-125 group-hover/item:bg-[#00E676]"
                       />
                     </li>
                   ))}

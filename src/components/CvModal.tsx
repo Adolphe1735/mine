@@ -3,6 +3,7 @@ import { Download, Printer, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   EDUCATION_DATA,
+  EXPERIENCE_TRACKS,
   PROFILE,
   PROJECTS,
   SKILL_CATEGORIES,
@@ -43,6 +44,12 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
       'ABOUT ME',
       '--------',
       PROFILE.aboutParagraph,
+      '',
+      'PRACTICAL ENGINEERING EXPERIENCE',
+      '--------------------------------',
+      ...EXPERIENCE_TRACKS.map(
+        (exp) => `- ${exp.role} (${exp.context}): ${exp.summary}`
+      ),
       '',
       'EDUCATION',
       '---------',
@@ -164,6 +171,20 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
                 <p className="mt-2 text-sm leading-relaxed text-slate-300">
                   {PROFILE.aboutParagraph}
                 </p>
+              </div>
+
+              <div>
+                <h5 className="font-mono text-xs uppercase tracking-wider text-[#00C853]">
+                  Practical Engineering Experience
+                </h5>
+                <ul className="mt-2 space-y-2 text-xs text-slate-300">
+                  {EXPERIENCE_TRACKS.map((exp) => (
+                    <li key={exp.index}>
+                      <span className="font-semibold text-white">{exp.role}</span> ({exp.context}) —{' '}
+                      {exp.summary}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div>

@@ -4,6 +4,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import CvModal from './components/CvModal';
 import Education from './components/Education';
+import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import { ScrollProgressBar } from './components/MotionPrimitives';
@@ -55,6 +56,7 @@ export default function App() {
         <main>
           <Hero onOpenCv={() => setCvModalOpen(true)} />
           <About />
+          <Experience />
           <Skills />
           <Projects onSelectProject={setSelectedProject} />
           <Education />

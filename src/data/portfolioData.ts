@@ -38,6 +38,16 @@ export interface ServiceItem {
   focus: string;
 }
 
+export interface ExperienceItem {
+  index: string;
+  role: string;
+  context: string;
+  summary: string;
+  deliverables: string[];
+  appliedProjects: string[];
+  stack: string[];
+}
+
 export const PROFILE = {
   fullName: 'Iragena Adolphe',
   profession: 'Software Developer',
@@ -78,25 +88,47 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     id: 'frontend',
     title: 'Frontend Development',
     summary: 'Interactive user interfaces, component architecture, and responsive styling.',
-    items: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'JSX'],
+    items: [
+      'HTML5',
+      'CSS3',
+      'JavaScript',
+      'TypeScript',
+      'React.js',
+      'JSX',
+      'Tailwind CSS',
+      'Bootstrap',
+    ],
   },
   {
     id: 'backend',
     title: 'Backend Development',
     summary: 'Server-side application logic, routing, and MVC web frameworks.',
-    items: ['PHP', 'Node.js', 'Express.js', 'Laravel'],
+    items: ['PHP', 'Node.js', 'Express.js', 'Laravel', 'Python'],
   },
   {
     id: 'database',
     title: 'Database Management',
     summary: 'Relational schema design, SQL querying, and document data storage.',
-    items: ['MySQL', 'MongoDB'],
+    items: ['MySQL', 'MongoDB', 'SQL'],
   },
   {
     id: 'tools',
     title: 'Programming and Tools',
     summary: 'Core languages, collaborative version control, and developer workflows.',
-    items: ['JavaScript', 'PHP', 'Dart', 'Git', 'GitHub', 'VS Code'],
+    items: [
+      'JavaScript',
+      'TypeScript',
+      'PHP',
+      'Python',
+      'Dart',
+      'Java',
+      'C',
+      'Git',
+      'GitHub',
+      'VS Code',
+      'Vite',
+      'Postman',
+    ],
   },
   {
     id: 'concepts',
@@ -305,3 +337,68 @@ export const SERVICES: ServiceItem[] = [
     focus: 'Storefronts · Product Catalogs · Contact Flows',
   },
 ];
+
+export const EXPERIENCE_TRACKS: ExperienceItem[] = [
+  {
+    index: '01',
+    role: 'React.js Frontend & UI Engineering',
+    context: 'Project & Academic Practice',
+    summary:
+      'Hands-on experience designing modular React.js applications with clean JSX architecture, interactive state flows using hooks, and responsive cross-device layouts.',
+    deliverables: [
+      'Built stateful student registration, search, and record deletion workflows in React.js',
+      'Implemented multi-view e-commerce product catalogs, shopping carts, and user profiles',
+      'Developed clean semantic HTML5, CSS3, and JavaScript web concepts such as Rwanda Air',
+    ],
+    appliedProjects: [
+      'Student Management System',
+      'ABC E-Commerce Website',
+      'Hospital Management System',
+      'Class Website',
+    ],
+    stack: ['React.js', 'JSX', 'JavaScript', 'HTML5', 'CSS3'],
+  },
+  {
+    index: '02',
+    role: 'Backend & REST API Development',
+    context: 'Server-Side & MVC Projects',
+    summary:
+      'Practical backend development experience building structured RESTful services, routing, authentication, and MVC web applications.',
+    deliverables: [
+      'Engineered REST API endpoints for student CRUD operations with Node.js and Express.js',
+      'Implemented authentication and authorization middleware to protect application routes',
+      'Practiced MVC separation of concerns using PHP and the Laravel framework',
+    ],
+    appliedProjects: ['Smart Learning Center API'],
+    stack: ['Node.js', 'Express.js', 'PHP', 'Laravel', 'REST API'],
+  },
+  {
+    index: '03',
+    role: 'Database Design & Data Management',
+    context: 'Relational & NoSQL Modeling',
+    summary:
+      'Experience structuring relational tables and document collections to store, query, and manage real-world application records reliably.',
+    deliverables: [
+      'Designed relational MySQL schemas connected directly to Express.js API services',
+      'Practiced CRUD queries, structured relationships, and data integrity patterns',
+      'Worked with MongoDB for flexible document-oriented application storage',
+    ],
+    appliedProjects: ['Smart Learning Center API', 'Student Management System'],
+    stack: ['MySQL', 'MongoDB', 'CRUD Operations'],
+  },
+  {
+    index: '04',
+    role: 'Version Control, Deployment & Networking',
+    context: 'EAV Kivumu TSS · L5 SOD',
+    summary:
+      'Consistent workflow discipline using Git and GitHub for source control, deploying live web builds to Vercel, and applying networking fundamentals.',
+    deliverables: [
+      'Maintained clean source repositories and commits on GitHub (@Adolphe1735)',
+      'Deployed production React web applications live via Vercel (class-website-eta.vercel.app)',
+      'Applied networking fundamentals and data structures & algorithms coursework at EAV Kivumu TSS',
+    ],
+    appliedProjects: ['Class Website'],
+    stack: ['Git', 'GitHub', 'Vercel', 'VS Code', 'Networking'],
+  },
+];
+

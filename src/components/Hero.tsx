@@ -1,13 +1,26 @@
-import { ArrowDownRight, Download, FolderGit2, Mail } from 'lucide-react';
+import { ArrowDownRight, Download, FolderGit2, GraduationCap, Mail, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PROFILE } from '../data/portfolioData';
 import ImageWithFallback from './ImageWithFallback';
 import { EASE_OUT_EXPO } from './MotionPrimitives';
+import TechLogo from './TechLogo';
 import TechMarquee from './TechMarquee';
 
 interface HeroProps {
   onOpenCv: () => void;
 }
+
+const HERO_FEATURED_LANGUAGES = [
+  'React.js',
+  'JavaScript',
+  'TypeScript',
+  'Node.js',
+  'PHP',
+  'Laravel',
+  'Python',
+  'MySQL',
+  'Dart',
+];
 
 export default function Hero({ onOpenCv }: HeroProps) {
   const scrollToSection = (id: string) => {
@@ -38,67 +51,116 @@ export default function Hero({ onOpenCv }: HeroProps) {
 
       <div className="relative mx-auto max-w-6xl px-4 pb-14 sm:px-6 sm:pb-20 lg:px-8">
         <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Left Column: Staggered Editorial Hierarchy */}
-          <div className="flex flex-col justify-center lg:col-span-7">
+          {/* Left Column: Elevated Editorial Hero Stage */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
+            className="glass-surface relative flex flex-col justify-center overflow-hidden rounded-3xl border border-white/[0.1] p-6 sm:p-9 lg:col-span-7"
+          >
+            {/* Architectural Emerald Top Highlight & Corner Brackets */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-[#00C853]/75 to-transparent"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-3 left-3 h-4 w-4 rounded-tl border-t border-l border-[#00C853]/50"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-3 bottom-3 h-4 w-4 rounded-br border-r border-b border-[#00C853]/50"
+            />
+
+            {/* Academic Track & Institution Header Kicker */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-              className="mb-4 flex items-center gap-2 text-sm font-medium tracking-wide"
+              transition={{ duration: 0.4, delay: 0.04, ease: EASE_OUT_EXPO }}
+              className="mb-5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 border-b border-white/[0.08] pb-4 text-xs font-mono tracking-wide sm:text-sm"
             >
-              <span className="h-px w-6 bg-[#00C853]" aria-hidden="true" />
-              <span className="text-[#00C853]">{PROFILE.educationLevel}</span>
-              <span aria-hidden="true" className="text-slate-500">
+              <span className="inline-flex items-center gap-1.5 font-semibold text-[#00E676]">
+                <GraduationCap className="h-4 w-4 text-[#00C853]" aria-hidden="true" />
+                <span>{PROFILE.educationLevel}</span>
+              </span>
+              <span aria-hidden="true" className="text-slate-600">
                 ·
               </span>
-              <span className="text-slate-300">
-                {PROFILE.institution}, {PROFILE.country}
+              <span className="inline-flex items-center gap-1.5 text-slate-300">
+                <MapPin className="h-3.5 w-3.5 text-[#00C853]" aria-hidden="true" />
+                <span>
+                  {PROFILE.institution}, {PROFILE.country}
+                </span>
               </span>
             </motion.div>
 
+            {/* Primary Display Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.48, delay: 0.06, ease: EASE_OUT_EXPO }}
-              className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-[3.35rem] lg:leading-[1.08]"
+              transition={{ duration: 0.48, delay: 0.08, ease: EASE_OUT_EXPO }}
+              className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-[3.2rem] lg:leading-[1.08]"
             >
-              HELLO, I&apos;M{' '}
-              <span className="bg-gradient-to-r from-[#00E676] via-[#00C853] to-emerald-300 bg-clip-text text-transparent">
+              <span className="block text-sm font-mono font-semibold tracking-[0.2em] text-slate-400 sm:text-base">
+                HELLO, I&apos;M
+              </span>
+              <span className="mt-1 inline-block bg-gradient-to-r from-white via-[#00E676] to-[#00C853] bg-clip-text text-transparent">
                 IRAGENA ADOLPHE
               </span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.48, delay: 0.12, ease: EASE_OUT_EXPO }}
-              className="mt-4 text-base font-medium text-slate-200 sm:text-lg"
-            >
-              {PROFILE.heroSubtitle}
-            </motion.p>
+            {/* Animated Emerald Accent Rule */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.55, delay: 0.14, ease: EASE_OUT_EXPO }}
+              aria-hidden="true"
+              className="mt-4 h-[2px] w-28 origin-left rounded-full bg-gradient-to-r from-[#00E676] via-[#00C853] to-transparent"
+            />
 
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
+            {/* Role Subtitle Card Strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.48, delay: 0.18, ease: EASE_OUT_EXPO }}
-              className="mt-4 max-w-xl text-base leading-relaxed text-slate-400"
+              transition={{ duration: 0.48, delay: 0.16, ease: EASE_OUT_EXPO }}
+              className="mt-5 rounded-xl border border-white/[0.08] bg-[#0B0F14]/70 px-4 py-3"
+            >
+              <p className="text-sm font-medium leading-relaxed text-slate-200 sm:text-base">
+                <span>Software Developer</span>
+                <span aria-hidden="true" className="mx-2 text-[#00C853]">
+                  |
+                </span>
+                <span>React.js Developer</span>
+                <span aria-hidden="true" className="mx-2 text-[#00C853]">
+                  |
+                </span>
+                <span className="text-[#00E676]">Full-Stack Development Enthusiast</span>
+              </p>
+            </motion.div>
+
+            {/* Main Hero Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.48, delay: 0.2, ease: EASE_OUT_EXPO }}
+              className="mt-4 max-w-xl text-base leading-relaxed text-slate-300"
             >
               {PROFILE.heroDescription}
             </motion.p>
 
             {/* Interactive Action Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.48, delay: 0.24, ease: EASE_OUT_EXPO }}
-              className="mt-8 flex flex-wrap items-center gap-3.5"
+              className="mt-7 flex flex-wrap items-center gap-3.5"
             >
               <motion.button
-                whileHover={{ y: -2 }}
+                whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={() => scrollToSection('projects')}
-                className="glow-accent group inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00C853] to-[#00E676] px-6 py-3 text-sm font-semibold text-[#0B0F14] transition-all duration-150 hover:brightness-105 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]"
+                className="glow-accent group inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00C853] to-[#00E676] px-6 py-3 text-sm font-semibold text-[#0B0F14] transition-all duration-150 hover:brightness-105 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]"
               >
                 <span>View My Projects</span>
                 <ArrowDownRight
@@ -112,9 +174,12 @@ export default function Hero({ onOpenCv }: HeroProps) {
                 whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={() => scrollToSection('contact')}
-                className="glass-surface inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors duration-150 hover:border-[#00C853]/55 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853]"
+                className="group inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border border-white/15 bg-[#0B0F14]/85 px-6 py-3 text-sm font-semibold text-white transition-all duration-150 hover:border-[#00C853]/60 hover:bg-[#15202B] whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853]"
               >
-                <Mail className="h-4 w-4 text-[#00C853]" aria-hidden="true" />
+                <Mail
+                  className="h-4 w-4 text-[#00C853] transition-transform duration-200 group-hover:scale-110"
+                  aria-hidden="true"
+                />
                 <span>Contact Me</span>
               </motion.button>
 
@@ -123,13 +188,43 @@ export default function Hero({ onOpenCv }: HeroProps) {
                 whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={onOpenCv}
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#101820]/55 px-5 py-3 text-sm font-medium text-slate-300 transition-colors duration-150 hover:border-[#00C853]/45 hover:text-white whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853]"
+                className="group inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/[0.03] px-5 py-3 text-sm font-medium text-slate-200 transition-all duration-150 hover:border-[#00C853]/50 hover:bg-[#00C853]/10 hover:text-white whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853]"
               >
-                <Download className="h-4 w-4 text-[#00C853]" aria-hidden="true" />
+                <Download
+                  className="h-4 w-4 text-[#00C853] transition-transform duration-200 group-hover:translate-y-0.5"
+                  aria-hidden="true"
+                />
                 <span>Download CV</span>
               </motion.button>
             </motion.div>
-          </div>
+
+            {/* Quick Featured Languages Logo Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.48, delay: 0.3, ease: EASE_OUT_EXPO }}
+              className="mt-7 flex flex-wrap items-center gap-4 border-t border-white/[0.08] pt-5"
+            >
+              <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                Core Stack
+              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                {HERO_FEATURED_LANGUAGES.map((lang) => (
+                  <span
+                    key={lang}
+                    title={lang}
+                    className="group/icon inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 transition-colors hover:text-white"
+                  >
+                    <TechLogo
+                      name={lang}
+                      className="h-4 w-4 shrink-0 transition-transform duration-150 group-hover/icon:scale-115"
+                    />
+                    <span className="hidden sm:inline">{lang}</span>
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column: Framed Developer Visual with Layered Glow & Corner Brackets */}
           <motion.div

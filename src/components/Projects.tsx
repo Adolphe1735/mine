@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { PROFILE, PROJECTS, type ProjectItem } from '../data/portfolioData';
 import ImageWithFallback from './ImageWithFallback';
 import { EASE_OUT_EXPO, SectionReveal } from './MotionPrimitives';
+import TechLogo from './TechLogo';
 
 interface ProjectsProps {
   onSelectProject: (project: ProjectItem) => void;
@@ -140,10 +141,15 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
                         {project.shortDescription}
                       </p>
 
-                      {/* Clean Unboxed Technology Stack */}
-                      <p className="mt-4 text-xs font-mono leading-relaxed text-slate-400">
-                        {project.technologies.join(' · ')}
-                      </p>
+                      {/* Clean Unboxed Technology Stack with Brand Logos */}
+                      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-mono text-slate-400">
+                        {project.technologies.map((tech) => (
+                          <span key={tech} className="inline-flex items-center gap-1.5">
+                            <TechLogo name={tech} className="h-3.5 w-3.5 shrink-0" />
+                            <span>{tech}</span>
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Card Actions */}
